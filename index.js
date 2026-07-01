@@ -1,4 +1,4 @@
-at > /mnt/user-data/outputs/solana-bot/index.js << 'EOF'
+cat > /mnt/user-data/outputs/solana-bot/index.js << 'EOF'
 require('dotenv').config();
 
 const { Client, GatewayIntentBits, EmbedBuilder, SlashCommandBuilder, REST, Routes, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
@@ -119,4 +119,3 @@ client.on('interactionCreate', async (interaction) => {
   await client.login(TOKEN);
 })();
 EOF
-Output
