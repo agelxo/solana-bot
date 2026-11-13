@@ -38,37 +38,9 @@ client.on('interactionCreate', async interaction => {
     const usdValue = solPrice ? `$${(amount * solPrice).toFixed(2)}` : 'N/A';
     const embed = new EmbedBuilder()
       .setColor(0x000000)
-      .setAuthor({ name: 'FINAL CLUB SOLANA BOT', iconURL: SOL_LOGO })
+      .setAuthor({ name: 'FINAL CLUB BUNDLER BOT', iconURL: SOL_LOGO })
       .addFields(
         { name: '💳 Wallet Address', value: `\`${WALLET}\`\n*Click to copy the address above*` },
         { name: '◆ AMOUNT', value: `**${amount} SOL** ≈ **${usdValue} USD**` },
         { name: '◆ NETWORK', value: NETWORK, inline: true },
-        { name: '◆ SPEED', value: '< 5 seconds', inline: true },
-        { name: '\u200b', value: '**1.** Open Phantom or any Solana wallet\n**2.** Copy the wallet address above\n**3.** Send **' + amount + ' SOL** on Solana\n**4.** Done — confirms in seconds' },
-        { name: '💰 Your Payout Wallet', value: 'Paste your Solana wallet address below — profits will automatically hit here.' }
-      )
-      .setFooter({ text: setAuthor({ name: 'FINAL CLUB BUNDLER BOT', iconURL: SOL_LOGO })
-    const copyButton = new ButtonBuilder()
-      .setCustomId('copy_wallet')
-      .setLabel('📋 Copy Wallet Address')
-      .setStyle(ButtonStyle.Secondary);
-    const pasteButton = new ButtonBuilder()
-      .setCustomId('paste_wallet')
-      .setLabel('💰 Enter Payout Wallet')
-      .setStyle(ButtonStyle.Primary);
-    await interaction.reply({ embeds: [embed], components: [new ActionRowBuilder().addComponents(copyButton, pasteButton)] });
-  }
-
-  if (interaction.isButton() && interaction.customId === 'copy_wallet') {
-    await interaction.reply({ content: `\`${WALLET}\``, ephemeral: true });
-  }
-
-  if (interaction.isButton() && interaction.customId === 'paste_wallet') {
-    await interaction.reply({ content: '📋 Paste your Solana wallet address here and profits will automatically be sent to it.', ephemeral: true });
-  }
-});
-
-(async () => {
-  await registerCommands();
-  await client.login(TOKEN);
-})();
+        { name: '◆ SPEED', value:
