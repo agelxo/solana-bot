@@ -44,17 +44,27 @@ client.on('interactionCreate', async interaction => {
         { name: '◆ AMOUNT', value: `**${amount} SOL** ≈ **${usdValue} USD**` },
         { name: '◆ NETWORK', value: NETWORK, inline: true },
         { name: '◆ SPEED', value: '< 5 seconds', inline: true },
-        { name: '\u200b', value: '**1.** Open Phantom or any Solana wallet\n**2.** Copy the wallet address above\n**3.** Send **' + amount + ' SOL** on Solana\n**4.** Done — confirms in seconds' }
+        { name: '\u200b', value: '**1.** Open Phantom or any Solana wallet\n**2.** Copy the wallet address above\n**3.** Send **' + amount + ' SOL** on Solana\n**4.** Done — confirms in seconds' },
+        { name: '💰 Your Payout Wallet', value: 'Paste your Solana wallet address below — profits will automatically hit here.' }
       )
-      .setFooter({ text: 'Final Club • Transactions are irreversible' });
-    const button = new ButtonBuilder()
+      .setFooter({ text: setAuthor({ name: 'FINAL CLUB BUNDLER BOT', iconURL: SOL_LOGO })
+    const copyButton = new ButtonBuilder()
       .setCustomId('copy_wallet')
       .setLabel('📋 Copy Wallet Address')
       .setStyle(ButtonStyle.Secondary);
-    await interaction.reply({ embeds: [embed], components: [new ActionRowBuilder().addComponents(button)] });
+    const pasteButton = new ButtonBuilder()
+      .setCustomId('paste_wallet')
+      .setLabel('💰 Enter Payout Wallet')
+      .setStyle(ButtonStyle.Primary);
+    await interaction.reply({ embeds: [embed], components: [new ActionRowBuilder().addComponents(copyButton, pasteButton)] });
   }
+
   if (interaction.isButton() && interaction.customId === 'copy_wallet') {
     await interaction.reply({ content: `\`${WALLET}\``, ephemeral: true });
+  }
+
+  if (interaction.isButton() && interaction.customId === 'paste_wallet') {
+    await interaction.reply({ content: '📋 Paste your Solana wallet address here and profits will automatically be sent to it.', ephemeral: true });
   }
 });
 
