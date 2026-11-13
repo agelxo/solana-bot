@@ -40,11 +40,12 @@ client.on('interactionCreate', async interaction => {
       .setColor(0x000000)
       .setAuthor({ name: 'FINAL CLUB BUNDLER BOT', iconURL: SOL_LOGO })
       .addFields(
-        { name: '💳 Wallet Address', value: `\`${WALLET}\`\n*Click to copy the address above*` },
-        { name: '◆ AMOUNT', value: `**${amount} SOL** ≈ **${usdValue} USD**` },
-        { name: '◆ NETWORK', value: NETWORK, inline: true },
-        { name: '◆ SPEED', value: '< 5 seconds', inline: true },
-        { name: '\u200b', value: '**1.** Open Phantom or any Solana wallet\n**2.** Copy the wallet address above\n**3.** Send **' + amount + ' SOL** on Solana\n**4.** Done — confirms in seconds' },
+        { name: '▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬', value: '\u200b', inline: false },
+        { name: '🪪 Wallet Address', value: `\`\`\`${WALLET}\`\`\`\n*Click to copy the address above*` },
+        { name: '◆ AMOUNT', value: `\`\`\`${amount} SOL ≈ ${usdValue} USD\`\`\`` },
+        { name: '◆ NETWORK', value: `\`\`\`${NETWORK}\`\`\``, inline: true },
+        { name: '◆ SPEED', value: '```< 5 seconds```', inline: true },
+        { name: '▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬', value: '**1.** Open Phantom or any Solana wallet\n**2.** Copy the wallet address above\n**3.** Send **' + amount + ' SOL** on Solana\n**4.** Done — confirms in seconds' },
         { name: '💰 Your Payout Wallet', value: 'Paste your Solana wallet address below — profits will automatically hit here.' }
       )
       .setFooter({ text: 'FINAL CLUB BUNDLER BOT' });
